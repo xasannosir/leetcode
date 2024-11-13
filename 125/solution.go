@@ -1,24 +1,21 @@
 package solution
 
-import (
-	"strings"
-	"unicode"
-)
-
-func trim(s string) string {
+func isPalindrome(s string) bool {
 	var soft string
+
 	for i := 0; i < len(s); i++ {
-		if unicode.IsLetter(rune(s[i])) || unicode.IsDigit(rune(s[i])) {
-			soft += strings.ToLower(string(s[i]))
+		value := s[i]
+		if 65 <= value && value <= 90 {
+			soft += string(value + 32)
+		} else if 97 <= value && value <= 122 {
+			soft += string(value)
+		} else if 48 <= value && value <= 57 {
+			soft += string(value)
 		}
 	}
-	return soft
-}
 
-func isPalindrome(s string) bool {
-	s = trim(s)
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		if s[i] != s[j] {
+	for i, j := 0, len(soft)-1; i < j; i, j = i+1, j-1 {
+		if soft[i] != soft[j] {
 			return false
 		}
 	}
