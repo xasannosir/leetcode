@@ -1,4 +1,4 @@
-package main
+package solution
 
 func myPow(x float64, n int) float64 {
 	if n == 0 {
