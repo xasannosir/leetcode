@@ -1,4 +1,4 @@
-package main
+package solution
 
 func isHappy(n int) bool {
 	if n == 1 || n == 7 {
