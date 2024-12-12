@@ -9,8 +9,8 @@ func reverse(x int) int {
 	}
 
 	var (
-		maxInt32 = 1<<31 - 1
-		minInt32 = -1 << 31
+		maxInt32 = 2147483647
+		minInt32 = -2147483648
 	)
 
 	if result > maxInt32 || result < minInt32 {

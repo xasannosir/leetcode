@@ -4,8 +4,8 @@ func divide(dividend int, divisor int) int {
 	if divisor == 1 {
 		return dividend
 	} else if divisor == -1 {
-		if dividend < 0 && -dividend > 1<<31-1 {
-			return 1<<31 - 1
+		if dividend < 0 && -dividend > 2147483647 {
+			return 2147483647
 		} else {
 			return -dividend
 		}
@@ -36,8 +36,8 @@ func divide(dividend int, divisor int) int {
 	if isNegative {
 		return -res
 	} else {
-		if res > 1<<31-1 {
-			return 1<<31 - 1
+		if res > 2147483647 {
+			return 2147483647
 		} else {
 			return res
 		}
