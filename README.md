@@ -1,6 +1,3 @@
-
-# LeetCode Solutions with Go
-
 ```go
 package main
 
@@ -9,6 +6,6 @@ import (
 )
 
 func main(){
-	fmt.Println("I solved problems without any library")
+	fmt.Println("I solved the problems with Golang without any libraries.")
 }
 ```
