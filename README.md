@@ -6,6 +6,6 @@ import (
 )
 
 func main(){
-	fmt.Println("I solved the problems with Golang without any libraries.")
+	fmt.Println("I solved the problems with Golang")
 }
 ```
