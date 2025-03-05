@@ -19,13 +19,17 @@ func sortSentence(s string) string {
 	}
 
 	sorted := func(s []string) []string {
-		for i := 0; i < len(s); i++ {
-			for j := i; j < len(s); j++ {
-				if s[i][len(s[i])-1] > s[j][len(s[j])-1] {
-					temp := s[i]
-					s[i] = s[j]
-					s[j] = temp
+		for i := 0; i < len(s)-1; i++ {
+			flag := true
+			for j := 0; j < len(s)-i-1; j++ {
+				if s[j][len(s[j])-1] > s[j+1][len(s[j+1])-1] {
+					s[j], s[j+1] = s[j+1], s[j]
+					flag = false
 				}
+			}
+	
+			if flag {
+				break
 			}
 		}
 

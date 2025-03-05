@@ -27,11 +27,17 @@ func intersection(nums [][]int) []int {
 		}
 	}
 
-	for i := 0; i < len(res); i++ {
-		for j := i + 1; j < len(res); j++ {
-			if res[i] > res[j] {
-				res[i], res[j] = res[j], res[i]
+	for i := 0; i < len(res)-1; i++ {
+		flag := true
+		for j := 0; j < len(res)-i-1; j++ {
+			if res[j] > res[j+1] {
+				res[j], res[j+1] = res[j+1], res[j]
+				flag = false
 			}
+		}
+
+		if flag {
+			break
 		}
 	}
 

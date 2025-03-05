@@ -15,12 +15,18 @@ func sortTheStudents(score [][]int, k int) [][]int {
 		}
 	}
 
-	for i := 0; i < len(numbers); i++ {
-		for j := i + 1; j < len(numbers); j++ {
-			if numbers[i] < numbers[j] {
-				numbers[i], numbers[j] = numbers[j], numbers[i]
-				indices[i], indices[j] = indices[j], indices[i]
+	for i := 0; i < len(numbers)-1; i++ {
+		flag := true
+		for j := 0; j < len(numbers)-i-1; j++ {
+			if numbers[j] < numbers[j+1] {
+				numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+				indices[j], indices[j+1] = indices[j+1], indices[j]
+				flag = false
 			}
+		}
+
+		if flag {
+			break
 		}
 	}
 
