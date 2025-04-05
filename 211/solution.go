@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type WordDictionary struct {
 	words []string
@@ -35,21 +33,3 @@ func (this *WordDictionary) Search(word string) bool {
 
 	return false
 }
-
-func main() {
-	obj := Constructor()
-	obj.AddWord("bad")
-	obj.AddWord("dat")
-	obj.AddWord("mad")
-	fmt.Println(obj.Search("pad") == false)
-	fmt.Println(obj.Search("bad") == true)
-	fmt.Println(obj.Search(".ad") == true)
-	fmt.Println(obj.Search("b..") == true)
-}
-
-/**
- * Your WordDictionary object will be instantiated and called as such:
- * obj := Constructor();
- * obj.AddWord(word);
- * param_2 := obj.Search(word);
- */
