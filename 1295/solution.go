@@ -1,24 +1,23 @@
 package solution
 
 func findNumbers(nums []int) int {
-	var result int
+	count := 0
 
-	findNumberLength := func(num int) int {
-		var count int
+	var countOfDigits func(num int, contain int) int
 
-		for num > 0 {
+	countOfDigits = func(num int, contain int) int {
+		if num == 0 {
+			return contain
+		}
+
+		return countOfDigits(num/10, contain+1)
+	}
+
+	for _, num := range nums {
+		if countOfDigits(num, 0)%2 == 0 {
 			count++
-			num = num / 10
-		}
-
-		return count
-	}
-
-	for i := 0; i < len(nums); i++ {
-		if findNumberLength(nums[i])%2 == 0 {
-			result++
 		}
 	}
 
-	return result
+	return count
 }
