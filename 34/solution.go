@@ -1,21 +1,22 @@
 package solution
 
 func searchRange(nums []int, target int) []int {
-	var result []int
+	firstInd, secondInd := -1, -1
+	firstHave, secondHave := false, false
 
-	for i := 0; i < len(nums); i++ {
-		if nums[i] == target {
-			result = append(result, i)
+	for i, val := range nums {
+		if val == target && !firstHave {
+			firstInd = i
+			firstHave = true
+		} else if val == target && firstHave {
+			secondInd = i
+			secondHave = true
 		}
 	}
 
-	if len(result) == 0 {
-		return []int{-1, -1}
-	} else if len(result) == 1 {
-		return []int{result[0], result[0]}
-	} else if len(result) > 2 {
-		return []int{result[0], result[len(result)-1]}
+	if firstHave && !secondHave {
+		secondInd = firstInd
 	}
 
-	return result
+	return []int{firstInd, secondInd}
 }
