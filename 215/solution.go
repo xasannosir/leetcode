@@ -1,4 +1,4 @@
-package main
+package solution
 
 func merge(first, second []int) []int {
 	var sorted []int
