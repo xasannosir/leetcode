@@ -33,9 +33,7 @@ func check(nums []int) bool {
 
 	c := make([]int, len(nums))
 
-	for i := range nums {
-		c[i] = nums[i]
-	}
+	copy(c, nums)
 
 	sort(c)
 
