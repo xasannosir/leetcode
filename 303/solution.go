@@ -1,20 +1,21 @@
 package solution
 
 type NumArray struct {
-	arr []int
+	numbers []int
 }
 
 func Constructor(nums []int) NumArray {
 	return NumArray{
-		arr: nums,
+		numbers: nums,
 	}
 }
 
 func (this *NumArray) SumRange(left int, right int) int {
-	sum := 0
+	total := 0
+
 	for i := left; i <= right; i++ {
-		sum += this.arr[i]
+		total += this.numbers[i]
 	}
 
-	return sum
+	return total
 }
