@@ -6,6 +6,6 @@ import (
 )
 
 func main(){
-	fmt.Println("I solved the problems with Go and SQL")
+	fmt.Println("I'm solving the problems with Go/SQL.")
 }
 ```
