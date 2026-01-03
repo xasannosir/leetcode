@@ -1,0 +1,1 @@
+SELECT emp_id AS employee_id, (SELECT department_id FROM Employee WHERE employee_id = emp_id) AS department_id FROM (SELECT employee_id AS emp_id FROM Employee GROUP BY emp_id HAVING COUNT(department_id) = 1) AS single_dept_id UNION SELECT employee_id, department_id FROM Employee WHERE primary_flag = 'Y';
