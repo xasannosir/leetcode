@@ -6,3 +6,15 @@ BEGIN
     );
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+    DECLARE N1 INT;
+    SET N1 = (N -1);
+
+    RETURN (
+        -- Write your MySQL query statement below.
+        SELECT e.salary AS salary FROM (SELECT DISTINCT e.salary FROM Employee AS e ORDER BY e.salary DESC) AS e LIMIT 1 OFFSET N1
+
+    );
+END

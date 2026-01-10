@@ -1,0 +1,5 @@
+-- Write your PostgreSQL query statement below
+SELECT s.machine_id AS machine_id, ROUND(AVG(e.timestamp - s.timestamp)::NUMERIC, 3) AS processing_time FROM (SELECT machine_id, process_id, activity_type, timestamp FROM Activity WHERE activity_type = 'start') AS s INNER JOIN (SELECT machine_id, process_id, activity_type, timestamp FROM Activity WHERE activity_type = 'end') AS e ON s.machine_id = e.machine_id AND s.process_id = e.process_id GROUP BY s.machine_id;
+
+-- Write your MySQL query statement below
+SELECT s.machine_id AS machine_id, ROUND(AVG(e.timestamp - s.timestamp), 3) AS processing_time FROM (SELECT machine_id, process_id, activity_type, timestamp FROM Activity WHERE activity_type = 'start') AS s INNER JOIN (SELECT machine_id, process_id, activity_type, timestamp FROM Activity WHERE activity_type = 'end') AS e ON s.machine_id = e.machine_id AND s.process_id = e.process_id GROUP BY s.machine_id;
