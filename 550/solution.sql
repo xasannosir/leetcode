@@ -1,0 +1,5 @@
+-- Write your PostgreSQL query statement below
+SELECT ROUND((SELECT COUNT(DISTINCT f.player_id) AS player_id FROM Activity AS a INNER JOIN (SELECT player_id, MIN(event_date) AS first_login_date FROM Activity GROUP BY player_id) AS f ON a.player_id = f.player_id AND a.event_date = (f.first_login_date + '1 day'::INTERVAL)::DATE)::NUMERIC/(SELECT COUNT(DISTINCT player_id) FROM Activity)::NUMERIC, 2) AS fraction;
+
+-- Write your MySQL query statement below
+SELECT ROUND((SELECT COUNT(DISTINCT f.player_id) AS player_id FROM Activity AS a INNER JOIN (SELECT player_id, MIN(event_date) AS first_login_date FROM Activity GROUP BY player_id) AS f ON a.player_id = f.player_id AND a.event_date = DATE_ADD(f.first_login_date, INTERVAL 1 DAY))/(SELECT COUNT(DISTINCT player_id) FROM Activity), 2) AS fraction;

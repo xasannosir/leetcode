@@ -1,0 +1,5 @@
+-- Write your PostgreSQL query statement below
+SELECT t.trans_date AS month, t.country AS country, COUNT(*) AS trans_count, SUM(CASE WHEN t.state = 'approved' THEN 1 ELSE 0 END) AS approved_count, SUM(t.amount) AS trans_total_amount, SUM(CASE WHEN t.state = 'approved' THEN t.amount ELSE 0 END) AS approved_total_amount FROM (SELECT id, country, state, amount, TO_CHAR(trans_date, 'YYYY-MM') AS trans_date FROM Transactions) AS t GROUP BY trans_date, country;
+
+-- Write your MySQL query statement below
+SELECT t.trans_date AS month, t.country AS country, COUNT(*) AS trans_count, SUM(CASE WHEN t.state = 'approved' THEN 1 ELSE 0 END) AS approved_count, SUM(t.amount) AS trans_total_amount, SUM(CASE WHEN t.state = 'approved' THEN t.amount ELSE 0 END) AS approved_total_amount FROM (SELECT id, country, state, amount, DATE_FORMAT(trans_date, '%Y-%m') AS trans_date FROM Transactions) AS t GROUP BY trans_date, country;
