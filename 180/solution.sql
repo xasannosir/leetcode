@@ -1,0 +1,1 @@
+SELECT DISTINCT a1.num AS ConsecutiveNums FROM Logs AS a1 INNER JOIN Logs AS a2 ON (a1.id - a2.id) = 1 AND a1.id > a2.id AND a1.num = a2.num INNER JOIN Logs AS a3 ON (a2.id - a3.id) = 1 AND a2.id > a3.id AND a2.num = a3.num;

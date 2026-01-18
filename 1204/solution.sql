@@ -1,0 +1,1 @@
+SELECT q.person_name FROM (SELECT q.person_id, q.person_name, q.weight, q.turn, (SELECT SUM(weight) AS total_weight FROM Queue WHERE turn <= q.turn) AS total_weight FROM Queue AS q ORDER BY q.turn) AS q WHERE q.total_weight <= 1000 ORDER BY q.total_weight DESC LIMIT 1;
