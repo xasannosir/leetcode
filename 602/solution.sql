@@ -1,0 +1,1 @@
+SELECT d.id AS id, COUNT(*) AS num FROM RequestAccepted AS ra INNER JOIN (SELECT DISTINCT requester_id AS id FROM RequestAccepted UNION SELECT DISTINCT accepter_id AS id FROM RequestAccepted) AS d ON d.id = ra.requester_id OR d.id = ra.accepter_id GROUP BY d.id ORDER BY num DESC LIMIT 1;
