@@ -1,0 +1,1 @@
+SELECT t.id AS id, (CASE WHEN t.p_id IS NULL THEN 'Root' WHEN NOT EXISTS(SELECT 1 FROM Tree WHERE p_id = t.id) THEN 'Leaf' ELSE 'Inner' END) AS type FROM Tree AS t;
