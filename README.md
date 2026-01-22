@@ -6,6 +6,10 @@ import (
 )
 
 func main(){
-	fmt.Println("I solved the problems with Go/SQL.")
+	fmt.Println("I solved the problems with Go")
 }
+```
+
+```sql
+SELECT 'I solved the problems with SQL' AS info;
 ```
