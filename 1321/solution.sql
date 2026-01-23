@@ -1,0 +1,5 @@
+-- Write your PostgreSQL query statement below
+SELECT vi.visited_interval AS visited_on, SUM(c.amount) AS amount, ROUND(SUM(c.amount)/7.0, 2) AS average_amount FROM Customer AS c INNER JOIN (SELECT DISTINCT visited_on AS visited_interval FROM Customer WHERE visited_on >= (SELECT MIN(visited_on + '6 days'::INTERVAL) AS min_on FROM Customer)) AS vi ON c.visited_on <= vi.visited_interval AND c.visited_on >= (vi.visited_interval - '6 days'::INTERVAL) GROUP BY vi.visited_interval ORDER BY vi.visited_interval;
+
+-- Write your MySQL query statement below
+SELECT vi.visited_interval AS visited_on, SUM(c.amount) AS amount, ROUND(SUM(c.amount)/7.0, 2) AS average_amount FROM Customer AS c INNER JOIN (SELECT DISTINCT visited_on AS visited_interval FROM Customer WHERE visited_on >= (SELECT MIN(DATE_ADD(visited_on, INTERVAL 6 DAY)) AS min_on FROM Customer)) AS vi ON c.visited_on <= vi.visited_interval AND c.visited_on >= (DATE_SUB(vi.visited_interval, INTERVAL 6 DAY)) GROUP BY vi.visited_interval ORDER BY vi.visited_interval;
